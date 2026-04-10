@@ -5,8 +5,8 @@ if (number < 0):
     signe = -1
 else:
     signe = 1
-last = abs(number) % 10;
-print("Last digit of", number, "is", signe * last, end=" ")
+last = signe * (abs(number) % 10)
+print("Last digit of", number, "is", last, end=" ")
 if (last > 5):
     print("and is greater than 5")
 elif (last == 0):
