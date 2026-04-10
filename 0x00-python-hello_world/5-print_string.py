@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-str = "Holberton School"
+str = "ALX"
 print(f'{str} {str} {str}')
 print(str[:9])
 
