@@ -8,21 +8,20 @@
 
 int check_cycle(listint_t *list)
 {
-    listint_t   *head;
-    listint_t   *current;
-    int         cycle;
+    listint_t   *slow;
+    listint_t   *fast;
 
-    cycle = 0;
-    head = list;
-    current = head->next;
-    while (current != NULL)
+    if (list == NULL)
+        return (0);
+
+    slow = list;
+    fast = list;
+    while (slow != NULL && fast != NULL)
     {
-        if (current == head)
-        {
-            cycle = 1;
-            break;
-        }
-        current = current->next;
+        slow = slow->next;
+        fast = fast->next->next;
+        if (slow == fast)
+            return (1);
     }
-    return (cycle);   
+    return (0);
 }
