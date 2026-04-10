@@ -2,5 +2,3 @@
 str = "ALX"
 print(f'{str} {str} {str}')
 print(str[:9])
-
-
