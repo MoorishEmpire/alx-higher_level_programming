@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-islower = __import__('7-islower').islower
 def uppercase(str):
+    result = ""
     for c in str:
-        if(islower(c)):
-            print(chr(ord(c) - 32), end="")
+        if(ord(c) >= ord('a') and ord(c) <= ord('z')):
+            result += chr(ord(c) - 32)
         else:
-            print(c, end="")
-    print("")
+            result += c
+    print("{}".format(result))
