@@ -47,6 +47,21 @@ listint_t   *pop_front(listint_t **head)
 }
 
 /**
+ * copy_list - copies src list in dest list
+ * @src: the source list
+ * @dest: the destination list
+*/
+
+void     copy_list(listint_t *src, listint_t **dest)
+{
+    while (src)
+    {
+        add_nodeint_end(dest, src->n);
+        src = src->next;
+    }
+}
+
+/**
  * is_palindrome - check a singly linked list is a palindrome or not.
  * @head: the first node of this list
  * Return: 1 if is a palindrome, 0 if not
@@ -64,8 +79,10 @@ int is_palindrome(listint_t **head)
         return (1);
 
     size = size_list(*head);
-    tmp = *head;
+    tmp = NULL;
     beta = NULL;
+
+    copy_list(*head, &tmp);
 
     i = 0;
     while (i < size / 2)
