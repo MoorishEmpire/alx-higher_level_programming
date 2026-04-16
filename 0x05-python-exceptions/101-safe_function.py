@@ -9,5 +9,5 @@ def safe_function(fct, *args):
         os.write(2, b"Exception: list index out of range\n")
         return None
     except ZeroDivisionError:
-        os.write(2, b"Excpetion: division by zero\n")
+        os.write(2, b"Exception: division by zero\n")
         return None
