@@ -1,13 +1,10 @@
 #!/usr/bin/python3
-import os
+import sys
 
 
 def safe_function(fct, *args):
     try:
         return fct(*args)
-    except IndexError:
-        os.write(2, b"Exception: list index out of range\n")
-        return None
-    except ZeroDivisionError:
-        os.write(2, b"Exception: division by zero\n")
+    except Exception as e:
+        print("Exception: {}".format(e), file=sys.stderr)
         return None
