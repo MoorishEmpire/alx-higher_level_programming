@@ -16,7 +16,7 @@ ZeroDivisionError: division by zero
 >>> matrix_divided(matrix, "three")
 Traceback (most recent call last):
     ...
-TypeError: div must a number
+TypeError: div must be a number
 
 
 
