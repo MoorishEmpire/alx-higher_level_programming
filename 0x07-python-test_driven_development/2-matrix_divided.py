@@ -10,15 +10,16 @@ def matrix_divided(matrix, div):
     """
     Divides all elements of matrix and returns a new_matrix.
     """
+    if (not isinstance(matrix, list) or
+        not all(isinstance(row, list) for row in matrix)):
+        raise TypeError("matrix must be a matrix (list of lists) "
+                            "of integers/floats")
+
     if not isinstance(div, (int, float)):
         raise TypeError("div must be a number")
     if div == 0:
         raise ZeroDivisionError("division by zero")
 
-    if (not isinstance(matrix, list) or
-        not all(isinstance(row, list) for row in matrix)):
-        raise TypeError("matrix must be a (list of lists) "
-                            "of integers/floats")
     size = len(matrix[0])
     new_matrix = [[0] * len(matrix[0]) for i in range(len(matrix))]
     i = 0
