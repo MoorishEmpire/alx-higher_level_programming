@@ -1,8 +1,15 @@
 #!/usr/bin/python3
-""" Prints full name and return to new_line. """
+"""
+Prints full name.
+
+This module provides the say_my_name function.
+"""
 
 
 def say_my_name(first_name, last_name=""):
+    """
+    Prints My name is <first_name> <last_name>.
+    """
     if not isinstance(first_name, str):
         raise TypeError("first name must be a string")
 
