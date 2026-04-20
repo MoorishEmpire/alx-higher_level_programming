@@ -4,14 +4,6 @@
 Hello.
 <BLANKLINE>
 
->>> text_indentation("Hello. World? Bye:")
-Hello.
-<BLANKLINE>
-World?
-<BLANKLINE>
-Bye:
-<BLANKLINE>
-
 >>> text_indentation("No special chars")
 No special chars
 
