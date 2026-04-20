@@ -42,7 +42,7 @@ def matrix_mul(m_a, m_b):
             if not isinstance(item, (int, float)):
                 raise TypeError("m_b should contain only integers or floats")
 
-    if size_a != size_b:
+    if size_a != len(m_b):
         raise ValueError("m_a and m_b can't be multiplied")
 
     return ([[sum(a_item * b_item for a_item, b_item in zip(A_row, B_col))
