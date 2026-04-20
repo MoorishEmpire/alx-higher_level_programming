@@ -1,11 +1,14 @@
 #!/usr/bin/python3
-"""Module that multiplies 2 matrices.
+"""
+Return a new_matrice the result fo 2 matrices multiplication.
+
+Module provide the matrices multiplication function.
 """
 
 
 def matrix_mul(m_a, m_b):
-    """ Function return a new matrice the result m_a and m_b
-        multiplication.
+    """
+    Function return a new matrice the result m_a and m_b multiplicaton.
     """
     if not isinstance(m_a, list):
         raise TypeError("m_a must be a list")
