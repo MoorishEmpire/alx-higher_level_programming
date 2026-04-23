@@ -7,8 +7,10 @@ class Square(Rectangle):
     """Square class that inherits from Rectangle"""
 
     def __init__(self, size):
+        """Initialize Square with size"""
         super().__init__(size, size)
         self.__size = size
 
     def area(self):
-        return super().area()
+        """Returns the area of the square"""
+        return self.__size ** 2
