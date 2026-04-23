@@ -5,12 +5,12 @@
 class BaseGeometry:
     """Class"""
 
-    """Raises an Exception message"""
     def area(self):
+        """Raises an Exception with the message area() is not implemented."""
         raise Exception("area() is not implemented")
 
-    """Validated value if not int or les or equal ot 0 raise an Error"""
     def integer_validator(self, name, value):
+        """Validates that value is a positive integer greater than 0."""
         if type(value) is not int:
             raise TypeError("{} must be an integer".format(name))
         if value <= 0:
