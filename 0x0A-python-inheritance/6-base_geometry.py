@@ -7,4 +7,4 @@ class BaseGeometry:
 
     """Raises an Exception message"""
     def area(self):
-        raise Exception("are() is not impemented")
+        raise Exception("area() is not impemented")
