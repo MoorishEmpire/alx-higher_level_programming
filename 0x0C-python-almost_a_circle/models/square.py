@@ -41,3 +41,15 @@ class Square(Rectangle):
         else:
             for key, value in kwargs.items():
                 setattr(self, key, value)
+
+    def to_dictionary(self):
+        """Return the dictionary representation of Square instance"""
+
+        dict = {}
+
+        dict['id'] = self.id
+        dict['x'] = self.x
+        dict['size'] = self.size
+        dict['y'] = self.y
+
+        return dict
