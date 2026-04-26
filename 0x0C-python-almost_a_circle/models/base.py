@@ -37,7 +37,7 @@ class Base:
         """
 
         file_name = cls.__name__ + ".json"
-        if list_objs is None:
+        if list_objs is None or len(list_objs) == 0:
             with open(file_name, "w") as file:
                 json.dump([], file)
             return
