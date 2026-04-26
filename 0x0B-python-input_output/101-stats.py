@@ -24,7 +24,7 @@ def main():
                     if dict[key] != 0:
                         print(f"{key}: {dict[key]}")
                 nb_line = 0
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, EOFError):
         print(f"File size: {file_size}")
         for key in dict:
             if dict[key] != 0:
