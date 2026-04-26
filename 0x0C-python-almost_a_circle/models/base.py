@@ -38,8 +38,9 @@ class Base:
 
         file_name = cls.__name__ + ".json"
         if list_objs is None or len(list_objs) == 0:
-            with open(file_name, "w") as file:
-                json.dump([], file)
-            return
-        with open(file_name, "w") as file:
-            json.dump([obj.to_dictionary() for obj in list_objs], file)
+            json_str = cls.to_json_string(None)
+        else:
+            dicts = [obj.to_dictionary() for obj in list_objs]
+            json_str = cls.to_json_string(dicts)
+        with open(file_name, "w", encoding="utf-8") as file:
+            file.write(json_str)
