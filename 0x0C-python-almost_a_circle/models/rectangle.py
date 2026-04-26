@@ -70,3 +70,8 @@ class Rectangle(Base):
         """Prints in stdout the Rectangle instance with the character #"""
         for i in range(self.__height):
             print("#" * self.__width)
+
+    def __str__(self):
+        """Returns a pritable format string of Rectangle instance"""
+        return (f"[Rectangle] ({self.id}) {self.__x}/{self.__y} - "
+                f"{self.__width}/{self.__height}")
