@@ -1,4 +1,4 @@
-#!/usr/bin/
+#!/usr/bin/python3
 """Module contains the pascal_triangle function"""
 
 
