@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 """Module that contains the Rectangle class"""
-from multiprocessing import Value
-from re import A
 from models.base import Base
 
 
@@ -79,11 +77,16 @@ class Rectangle(Base):
 
     def __str__(self):
         """Returns a pritable format string of Rectangle instance"""
+
         return (f"[Rectangle] ({self.id}) {self.__x}/{self.__y} - "
                 f"{self.__width}/{self.__height}")
 
     def update(self, *args, **kwargs):
-        """Assigns an argument to each attribute"""
+        """
+        Assigns an argument to each attribute if args exist and is not empty
+        if yes Assigns a key/value argument to attributes
+        """
+
         if len(args) > 0:
             self.id = args[0]
             if len(args) > 1:
