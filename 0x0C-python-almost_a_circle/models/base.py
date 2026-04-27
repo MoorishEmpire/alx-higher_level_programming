@@ -91,7 +91,7 @@ class Base:
                 return []
         elif cls.__name__ == "Square":
             try:
-                with open("Rectangle.json", "r") as f:
+                with open("Square.json", "r") as f:
                     raw = f.read()
                 dicts = cls.from_json_string(raw)
                 lst = [None] * len(dicts)
