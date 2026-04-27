@@ -68,3 +68,33 @@ class Base:
             obj = cls()
         obj.update(**dictionary)
         return obj
+
+    @classmethod
+    def load_from_file(cls):
+        """
+        Return a list of instances retrived from the file <class name>.json
+        or an empty list if the file deosn't exit
+        """
+
+        if cls.__name__ == "Rectangle":
+            try:
+                with open("Rectangle.json", "r") as f:
+                    raw = f.read()
+
+                dicts = cls.from_json_string(raw)
+                lst = [None] * len(dicts)
+                for i, d in enumerate(dicts):
+                    lst[i] = cls.create(**d)
+                return lst
+
+            except FileNotFoundError:
+                return []
+        elif cls.__name__ == "Square":
+            try:
+                with open("Rectangle.json", "r") as f:
+                    raw = f.read()
+                dicts = cls.from_json_string(raw)
+                return [cls.create(**dict) for dict in dicts]
+
+            except FileNotFoundError:
+                return []
