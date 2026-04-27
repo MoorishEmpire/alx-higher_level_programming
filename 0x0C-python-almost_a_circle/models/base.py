@@ -44,3 +44,13 @@ class Base:
             json_str = cls.to_json_string(dicts)
         with open(file_name, "w", encoding="utf-8") as file:
             file.write(json_str)
+
+    def from_json_string(json_string):
+        """
+        Return the list of JSON string representation of json_string
+        Or empty list if json_string is None or empty
+        """
+
+        if json_string is None or json_string == "":
+            return []
+        return json.loads(json_string)
