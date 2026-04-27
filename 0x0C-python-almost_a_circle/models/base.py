@@ -3,6 +3,7 @@
 Module That contains the Base class
 """
 import json
+import csv
 
 
 class Base:
@@ -76,28 +77,58 @@ class Base:
         or an empty list if the file deosn't exit
         """
 
+        file_name = cls.__name__ + ".json"
+        try:
+            with open(file_name, "r") as f:
+                raw = f.read()
+
+            dicts = cls.from_json_string(raw)
+            lst = [None] * len(dicts)
+            for i, d in enumerate(dicts):
+                lst[i] = cls.create(**d)
+            return lst
+
+        except FileNotFoundError:
+            return []
+        
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        Serialize a list_objs to CSV file
+        """
+
         if cls.__name__ == "Rectangle":
-            try:
-                with open("Rectangle.json", "r") as f:
-                    raw = f.read()
-
-                dicts = cls.from_json_string(raw)
-                lst = [None] * len(dicts)
-                for i, d in enumerate(dicts):
-                    lst[i] = cls.create(**d)
-                return lst
-
-            except FileNotFoundError:
-                return []
+            fieldsname = ['id', 'width', 'height', 'x', 'y']
         elif cls.__name__ == "Square":
-            try:
-                with open("Square.json", "r") as f:
-                    raw = f.read()
-                dicts = cls.from_json_string(raw)
-                lst = [None] * len(dicts)
-                for i, d in enumerate(dicts):
-                    lst[i] = cls.create(**d)
-                return lst
+            fieldsname = ['id', 'size', 'x', 'y']
 
-            except FileNotFoundError:
-                return []
+        file_name = cls.__name__ + ".csv"
+        with open(file_name, "w") as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=fieldsname)
+            writer.writeheader()
+            for obj in list_objs:
+                writer.writerow(obj.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        Deserializes form CSV file
+        """
+
+        if cls.__name__ == "Rectangle":
+            fieldsname = ['id', 'width', 'height', 'x', 'y']
+        elif cls.__name__ == "Square":
+            fieldsname = ['id', 'size', 'x', 'y']
+
+
+        list_dict = dict()
+        file_name = cls.__name__ + ".csv"
+        with open(file_name, "r") as csvfile:
+            reader = csv.DictReader(csvfile)
+            result_list = []
+            for row in reader:
+                for field in fieldsname:
+                    list_dict[field] = int(row[field])
+                result_list.append(cls.create(**list_dict))
+        return result_list
