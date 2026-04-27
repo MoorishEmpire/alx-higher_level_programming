@@ -90,7 +90,6 @@ class Base:
 
         except FileNotFoundError:
             return []
-        
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
@@ -120,7 +119,6 @@ class Base:
             fieldsname = ['id', 'width', 'height', 'x', 'y']
         elif cls.__name__ == "Square":
             fieldsname = ['id', 'size', 'x', 'y']
-
 
         list_dict = dict()
         file_name = cls.__name__ + ".csv"
