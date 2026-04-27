@@ -82,10 +82,7 @@ class Base:
                     raw = f.read()
 
                 dicts = cls.from_json_string(raw)
-                lst = [None] * len(dicts)
-                for i, d in enumerate(dicts):
-                    lst[i] = cls.create(**d)
-                return lst
+                return [cls.create(**dict) for dict in dicts]
 
             except FileNotFoundError:
                 return []
