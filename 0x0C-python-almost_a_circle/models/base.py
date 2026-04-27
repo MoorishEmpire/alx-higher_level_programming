@@ -82,7 +82,10 @@ class Base:
                     raw = f.read()
 
                 dicts = cls.from_json_string(raw)
-                return [cls.create(**dict) for dict in dicts]
+                lst = [None] * len(dicts)
+                for i, d in enumerate(dicts):
+                    lst[i] = cls.create(**d)
+                return lst
 
             except FileNotFoundError:
                 return []
@@ -91,7 +94,10 @@ class Base:
                 with open("Rectangle.json", "r") as f:
                     raw = f.read()
                 dicts = cls.from_json_string(raw)
-                return [cls.create(**dict) for dict in dicts]
+                lst = [None] * len(dicts)
+                for i, d in enumerate(dicts):
+                    lst[i] = cls.create(**d)
+                return lst
 
             except FileNotFoundError:
                 return []
