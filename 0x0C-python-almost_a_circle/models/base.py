@@ -4,6 +4,7 @@ Module That contains the Base class
 """
 import json
 import csv
+import turtle
 
 
 class Base:
@@ -130,3 +131,65 @@ class Base:
                     list_dict[field] = int(row[field])
                 result_list.append(cls.create(**list_dict))
         return result_list
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """
+        Open a window and draw all the Rectangle and Squares
+        """
+
+        trigo = turtle.Turtle()
+        screen = turtle.Screen()
+        screen.title("Almost a circle")
+        trigo.speed(1)
+        trigo.pensize(2)
+
+        for rect in list_rectangles:
+            w = rect.width
+            h = rect.height
+            x = rect.x
+            y = rect.y
+            r = (rect.id * 37) % 256
+            g = (rect.id * 17) % 256
+            b = (rect.id * 97) % 256
+            color = "#{:02x}{:02x}{:02x}".format(r, g, b)
+            trigo.color("steel blue", color)
+            trigo.setheading(0)
+            trigo.penup()
+            trigo.goto(x, -y)
+            trigo.pendown()
+            trigo.begin_fill()
+            trigo.forward(w)
+            trigo.left(90)
+            trigo.forward(h)
+            trigo.left(90)
+            trigo.forward(w)
+            trigo.left(90)
+            trigo.forward(h)
+            trigo.end_fill()
+            trigo.hideturtle()
+
+        for squ in list_squares:
+            s = squ.size
+            x = squ.x
+            y = squ.y
+            r = (squ.id * 37) % 256
+            g = (squ.id * 17) % 256
+            b = (squ.id * 97) % 256
+            color = "#{:02x}{:02x}{:02x}".format(r, g, b)
+            trigo.color("steel blue", color)
+            trigo.setheading(0)
+            trigo.penup()
+            trigo.goto(x, -y)
+            trigo.pendown()
+            trigo.begin_fill()
+            trigo.forward(s)
+            trigo.left(90)
+            trigo.forward(s)
+            trigo.left(90)
+            trigo.forward(s)
+            trigo.left(90)
+            trigo.forward(s)
+            trigo.end_fill()
+
+        turtle.done()
