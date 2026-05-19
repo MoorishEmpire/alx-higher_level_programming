@@ -22,12 +22,15 @@ if __name__ == "__main__":
         "(SELECT states.id FROM states WHERE states.name = '{}')".format(name)
     )
     rows = cursor.fetchall()
-    len_rows = len(rows)
-    for i in range(len_rows):
-        if i == len_rows - 1:
-            print(rows[i][0])
-        else:
-            print(rows[i][0], end=", ")
+    if rows:
+        len_rows = len(rows)
+        for i in range(len_rows):
+            if i == len_rows - 1:
+                print(rows[i][0])
+            else:
+                print(rows[i][0], end=", ")
+    else:
+        print()
 
     cursor.close()
     mydb.close()
