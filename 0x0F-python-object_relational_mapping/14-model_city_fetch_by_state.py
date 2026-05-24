@@ -23,6 +23,6 @@ if __name__ == "__main__":
     ).all()
 
     for state_name, city_id, city_name in tuples_res:
-        print(f'{state_name}: {city_id} {city_name}')
+        print(f'{state_name}: ({city_id}) {city_name}')
 
     session.close()
