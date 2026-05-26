@@ -18,8 +18,7 @@ if __name__ == "__main__":
 
     session = Session(engine)
 
-    states = session.query(State).order_by(State.id)\
-        .options(joinedload(State.cities)).all()
+    states = session.query(State).order_by(State.id).all()
     for state in states:
         print(f"{state.id}: {state.name}")
         for city in sorted(state.cities, key=lambda c: c.id):
